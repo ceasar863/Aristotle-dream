@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Player_DataSO_Manager : MonoBehaviour
 {
-    public static Player_DataSO_Manager instace { get; private set; }
+    public static Player_DataSO_Manager instance { get; private set; }
     public Player_DataSO_Lib lib;
 
     private void Awake()
     {
-        if (instace != null && instace != this)
+        if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
         }
         else
         {
-            instace = this;
+            instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
 
@@ -24,6 +24,11 @@ public class Player_DataSO_Manager : MonoBehaviour
             lib = ScriptableObject.CreateInstance<Player_DataSO_Lib>();       }
     }
 
+
+    /// <summary>
+    /// 保存组件类的数据
+    /// </summary>
+    /// <param name="component"></param>
     public void Save_Component_Data(Component component)
     {
         if (component == null || lib == null) return;
@@ -34,7 +39,7 @@ public class Player_DataSO_Manager : MonoBehaviour
         FieldInfo[] fields = component_type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
         foreach(FieldInfo field in fields)
         {
-            if(field.GetCustomAttribute<Save_Data_Attribute>()!=null)
+            if(field.GetCustomAttribute<SaveDataAttribute>()!=null)
             {
                 string field_key = $"{component_key_prefix}_{field.Name}";
                 object field_value = field.GetValue(component);
@@ -43,6 +48,10 @@ public class Player_DataSO_Manager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 加载组件类的数据
+    /// </summary>
+    /// <param name="component"></param>
     public void Load_Component_Data(Component component)
     {
         if (component == null || lib == null) return;
@@ -52,12 +61,34 @@ public class Player_DataSO_Manager : MonoBehaviour
         FieldInfo[] fields = component_type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
         foreach (FieldInfo field in fields)
         {
-            if (field.GetCustomAttribute<Save_Data_Attribute>() != null)
+            if (field.GetCustomAttribute<SaveDataAttribute>() != null)
             {
                 string field_key = $"{component_key_prefix}_{field.Name}";
-                object field_value = lib.Load_Property(field_key);
-                if (field_value != null) field.SetValue(component , field);
+                object field_value = lib.Load_Property(field_key, field.FieldType);
+                if (field_value != null) field.SetValue(component, field_value);
             }
         }
+    }
+
+    /// <summary>
+    /// 保存任意对象的数据
+    /// </summary>
+    /// <param name="target_name"></param>
+    /// <param name="target"></param>
+    public void Save_Object_Data(string target_name , object target)
+    {
+        if (target == null || lib == null || string.IsNullOrEmpty(target_name)) return;
+        lib.Save_Property(target_name, target);
+    }
+
+    /// <summary>
+    /// 加载任意对象的数据
+    /// </summary>
+    /// <param name="target_name"></param>
+    /// <param name="target_type"></param>
+    public void Load_Object_Data(string target_name , Type target_type)
+    {
+        if (lib == null || string.IsNullOrEmpty(target_name) || target_type == null) return;
+        lib.Load_Property(target_name, target_type);
     }
 }
