@@ -34,6 +34,11 @@ public class Animation_Trigger : MonoBehaviour
     //    player_aristotle.rb.linearVelocity = new(0 , -player_aristotle.player_drop_force);
     //}
 
+    public void Just_Do_It()
+    {
+        player_aristotle.state_machine.current_state.Should_Do_it();
+    }
+
     public void Freeze_Anim()
     {
         player_aristotle.anim.speed = 0f;

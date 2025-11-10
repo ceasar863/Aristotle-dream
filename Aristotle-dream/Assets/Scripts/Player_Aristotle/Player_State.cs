@@ -11,6 +11,8 @@ public class Player_State
     protected float timer;
     protected string state_name;
     protected bool trigger_called;
+    protected bool should_do;
+    protected bool have_done;
 
     public Player_State(Entity_Player_Aristotle player_aristotle, State_Machine state_machine, string name)
     {
@@ -30,6 +32,8 @@ public class Player_State
 
     public virtual void Enter()
     {
+        should_do = false;
+        have_done = false;
         player_aristotle.anim.SetBool(state_name, true);
         trigger_called = false;
     }
@@ -42,6 +46,11 @@ public class Player_State
     public virtual void Exit()
     {
         player_aristotle.anim.SetBool(state_name, false);
+    }
+
+    public void Should_Do_it()
+    {
+        should_do = true;
     }
 
     public void Animation_Trigger()

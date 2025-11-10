@@ -16,8 +16,9 @@ public class Player_Aristotle_On_Ground_State : Player_State
     public override void Update()
     {
         base.Update();
-        if (player_aristotle.player_input.Player.Shoot.WasPerformedThisFrame())
-            state_machine.Change_State(player_aristotle.shoot_state);
+
+        if (player_aristotle.is_aiming)
+            state_machine.Change_State(player_aristotle.aim_state);
 
         if(player_aristotle.player_input.Player.Jump.WasPerformedThisFrame())
             state_machine.Change_State(player_aristotle.jump_state);

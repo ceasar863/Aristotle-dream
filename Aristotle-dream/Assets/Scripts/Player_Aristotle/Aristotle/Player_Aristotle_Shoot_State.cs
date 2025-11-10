@@ -15,6 +15,14 @@ public class Player_Aristotle_Shoot_State : Player_State
     public override void Update()
     {
         base.Update();
+        if(should_do && !have_done)
+        {
+            GameObject.Instantiate(player_aristotle.bullet_prefab,
+                              player_aristotle.shoot_point.transform.position,
+                              Quaternion.identity);
+            have_done = true;
+        }
+
         if (trigger_called)
             state_machine.Change_State(player_aristotle.idle_state);
     }
