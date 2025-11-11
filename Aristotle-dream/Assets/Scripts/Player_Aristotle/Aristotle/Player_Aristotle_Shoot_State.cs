@@ -17,9 +17,8 @@ public class Player_Aristotle_Shoot_State : Player_State
         base.Update();
         if(should_do && !have_done)
         {
-            GameObject.Instantiate(player_aristotle.bullet_prefab,
-                              player_aristotle.shoot_point.transform.position,
-                              Quaternion.identity);
+            ammo_system.Shoot_Bullet(player_aristotle.shoot_point.transform.position);
+            ammo_system.Clear_Bullet();
             have_done = true;
         }
 

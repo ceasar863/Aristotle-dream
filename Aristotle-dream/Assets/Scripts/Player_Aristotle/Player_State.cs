@@ -7,6 +7,7 @@ public class Player_State
     protected SpriteRenderer sr;
     protected Animator anim;
     protected State_Machine state_machine;
+    protected Ammo_System ammo_system;
 
     protected float timer;
     protected string state_name;
@@ -22,6 +23,7 @@ public class Player_State
         this.sr = player_aristotle.sr;
         this.anim = player_aristotle.anim;
         this.state_name = name;
+        this.ammo_system = player_aristotle.ammo_system;
     }
 
     public void Awake()

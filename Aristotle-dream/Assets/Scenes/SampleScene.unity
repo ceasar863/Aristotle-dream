@@ -352,7 +352,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -377,7 +377,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -7.37, y: 6.39, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -813,6 +813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1501715384}
   - component: {fileID: 1501715383}
+  - component: {fileID: 1501715387}
   - component: {fileID: 1501715386}
   - component: {fileID: 1501715385}
   m_Layer: 3
@@ -842,7 +843,6 @@ MonoBehaviour:
   jump_force: 25
   main_camera: {fileID: 519420031}
   shoot_dire: {x: 0, y: 0}
-  shoot_velocity: 12
   what_is_ground:
     serializedVersion: 2
     m_Bits: 64
@@ -928,6 +928,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1501715387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501715382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7709c7c3927f0458f0b7062da08475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ammo_System
+  bullet_prefab: {fileID: 2757359608626884816, guid: 8181993463490fe44ad20b1ebd6fc25d, type: 3}
+  current_bullet: {fileID: 4522200327014738707, guid: 441f00fd336c05f4abe2db4961314574, type: 3}
 --- !u!1 &1519127299
 GameObject:
   m_ObjectHideFlags: 0

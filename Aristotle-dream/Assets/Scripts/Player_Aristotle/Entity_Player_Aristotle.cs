@@ -12,6 +12,7 @@ public class Entity_Player_Aristotle : MonoBehaviour
     public Player_Input player_input { get; private set; }
     public Vector2 movement_input { get; private set; }
     public State_Machine state_machine { get; private set; }
+    public Ammo_System  ammo_system {get;private set;}
 
     [Header("Objects")]
     public GameObject ground_check;
@@ -30,7 +31,6 @@ public class Entity_Player_Aristotle : MonoBehaviour
     [Header("Combat Details")]
     public Camera main_camera;
     public Vector2 shoot_dire;
-    public float shoot_velocity;
 
     public LayerMask what_is_ground;
     public float ground_check_distance = 1.5f;
@@ -65,8 +65,10 @@ public class Entity_Player_Aristotle : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
+        ammo_system = GetComponent<Ammo_System>();
         state_machine = new State_Machine();
         player_input = new Player_Input();
+        
     }
 
     private void Start()
@@ -102,7 +104,7 @@ public class Entity_Player_Aristotle : MonoBehaviour
         anim.SetFloat("Y_Velocity", rb.linearVelocity.y);
 
         is_on_ground = Physics2D.Raycast(ground_check.transform.position, Vector2.down, ground_check_distance, what_is_ground);
-        shoot_dire = main_camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        shoot_dire = Direction_To_Mouse();
         is_in_air = !is_on_ground;
         
         state_machine.Update_State();
@@ -155,5 +157,14 @@ public class Entity_Player_Aristotle : MonoBehaviour
     {
         Vector3 position = ground_check.transform.position;
         Gizmos.DrawLine(position, new Vector3(position.x, position.y - ground_check_distance, position.z));
+    }
+
+    private Vector2 Direction_To_Mouse()
+    {
+        Vector2 player_position = transform.position;
+        Vector2 world_mouse_position = main_camera.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector2 direction = world_mouse_position - player_position;
+        return direction.normalized;
     }
 }

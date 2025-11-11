@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Player_Aristotle_Aim_State : Player_State
 {
-    private int sum_point = 16;
-    private float point_interval = 0.05f;
+    private int sum_point = 25;
+    private float point_interval = 0.07f;
     private Transform[] dots;
     private bool has_dots = false;
 
@@ -25,9 +25,8 @@ public class Player_Aristotle_Aim_State : Player_State
 
         player_aristotle.Handle_Flip();
         Draw_Aim_Line(player_aristotle.shoot_dire);
-        Set_Line_Aable(true);
         
-        if (player_aristotle.player_input.Player.Shoot.WasPressedThisFrame())
+        if (player_aristotle.player_input.Player.Shoot.WasPressedThisFrame() && ammo_system.Get_Current_Bullet()!=null)
             state_machine.Change_State(player_aristotle.shoot_state);
 
         if (!player_aristotle.is_aiming)
@@ -45,22 +44,18 @@ public class Player_Aristotle_Aim_State : Player_State
     {
        for(int i=0; i<sum_point; i++)
         {
-            dots[i].transform.position = Predict_Trajectory(direction , point_interval*i);
+            var bullet = ammo_system.Get_Current_Bullet();
+            if (bullet == null) return;
+
+            dots[i].transform.position = bullet.Predict_Trajectory(direction , point_interval*i);
         }
+        Set_Line_Aable(true);
     }
 
     public void Set_Line_Aable(bool flag)
     {
         foreach (var dot in dots)
             dot.gameObject.SetActive(flag);
-    }
-
-    private Vector2 Predict_Trajectory(Vector2 direction, float t)
-    {
-        float distance = player_aristotle.shoot_velocity * t;
-        Vector2 next_point = distance * direction.normalized;
-
-        return next_point+(Vector2)player_aristotle.shoot_point.transform.position;
     }
 
     private Transform[] Generate_Dots()
