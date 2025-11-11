@@ -8,14 +8,14 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] private float jumpforce = 8f;
+    [SerializeField] private bool isMoving;
 
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-       
+        anim = GetComponentInChildren<Animator>();
     }
    
     private void Update()
@@ -28,8 +28,7 @@ public class Player : MonoBehaviour
 
     private void HandleAnimations()
     {
-        Debug.Log("HandleAnimations 方法已执行"); // 新增日志
-        bool isMoving = rb.linearVelocity.x != 0;
+        isMoving = rb.linearVelocity.x != 0;
         
         anim.SetBool("isMoving", isMoving);
         Debug.Log($"X速度：{rb.linearVelocity.x} | isMoving：{isMoving}");

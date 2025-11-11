@@ -13,7 +13,6 @@ public class Object_Bullet_Small_Stone : Bullet
 
     protected override void Start()
     {
-       
     }
 
     protected override void Update()
@@ -47,7 +46,6 @@ public class Object_Bullet_Small_Stone : Bullet
             float new_speed = speed * (1 + speed_rate);
             speed = Mathf.Clamp(new_speed, 0, max_speed);
             speed_rate *= 0.95f;
-            Debug.Log(speed);
             timer = 0;
         }
     }
