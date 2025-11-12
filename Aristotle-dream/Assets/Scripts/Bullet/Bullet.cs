@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
         Set_Direction(player_aristotle.shoot_dire);
         Set_Bullet_Velocity(speed);
 
-        if (!player_aristotle.is_facing_right)
+        if (!player_aristotle.Get_Parameter<bool>("is_facing_right"))
             anim.transform.Rotate(0, 180, 0);
         sr.transform.right = rb.linearVelocity;
     }

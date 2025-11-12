@@ -13,6 +13,7 @@ public class Object_Bullet_Small_Stone : Bullet
 
     protected override void Start()
     {
+
     }
 
     protected override void Update()

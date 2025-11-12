@@ -12,9 +12,9 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
+  - Enemy_Body
+  - Enemy_Grab
+  - Bullet
   - 
   - 
   - 
