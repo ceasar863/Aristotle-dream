@@ -2,7 +2,7 @@ using System.Collections;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public class Entity : MonoBehaviour,IEntity_Interface
 {
     public Rigidbody2D rb { get; private set; }
     public SpriteRenderer sr { get; private set; }
@@ -12,10 +12,10 @@ public class Entity : MonoBehaviour
     public LayerMask what_is_ground;
 
     public float ground_check_distance = 1.5f;
-    protected bool is_facing_right;
     protected bool is_on_ground;
     protected bool is_in_air;
-    protected int facing_dir;
+    protected bool is_facing_right=true;
+    protected int facing_dir=1;
 
     [Header("Objects")]
     public GameObject entity_center;
@@ -45,23 +45,24 @@ public class Entity : MonoBehaviour
         state_machine.Update_State();
     }
 
-    protected void Flip()
+    public void Flip()
     {
-        anim.transform.Rotate(0, 180, 0);
+        anim.gameObject.transform.Rotate(0, 180, 0);
+        Debug.Log("hey!");
+        is_facing_right = !is_facing_right;
+        facing_dir = -facing_dir;
     }
 
     public virtual void Handle_Flip()
     {
         if (is_facing_right && rb.linearVelocity.x < 0)
         {
-            is_facing_right = false;
-            facing_dir = -facing_dir;
+            Debug.Log("I found you!");
             Flip();
         }
         else if (!is_facing_right && rb.linearVelocity.x > 0)
         {
-            is_facing_right = true;
-            facing_dir = -facing_dir;
+            Debug.Log("I found you!");
             Flip();
         }
     }
@@ -98,5 +99,21 @@ public class Entity : MonoBehaviour
         }
 
         return (T)value;
+    }
+
+    public virtual void Set_Velocity(float x_velocity, float y_velocity)
+    {
+        rb.linearVelocity = new Vector2(x_velocity, y_velocity);
+        Handle_Flip();
+    }
+
+    public virtual void Take_Damage(float damage, GameObject attacker = null)
+    {
+       
+    }
+
+    public virtual void Die()
+    {
+        
     }
 }

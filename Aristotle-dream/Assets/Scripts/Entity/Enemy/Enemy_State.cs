@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Enemy_State : Entity_State
 {
+    protected Enemy enemy;
+
     public Enemy_State(Entity entity, State_Machine state_machine, string name) : base(entity, state_machine, name)
     {
     }
@@ -9,6 +11,7 @@ public class Enemy_State : Entity_State
     public override void Enter()
     {
         base.Enter();
+        enemy = entity.gameObject.GetComponent<Enemy>();
     }
 
     public override void Update()

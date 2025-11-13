@@ -12,6 +12,7 @@ public class Entity_State
 
     protected float timer;
     protected string state_name;
+    protected bool can_change_state;
     protected bool trigger_called;
     protected bool should_do;
     protected bool have_done;
@@ -31,8 +32,9 @@ public class Entity_State
     {
         should_do = false;
         have_done = false;
-        entity.anim.SetBool(state_name, true);
         trigger_called = false;
+        can_change_state = false;
+        entity.anim.SetBool(state_name, true);
     }
 
     public virtual void Update()

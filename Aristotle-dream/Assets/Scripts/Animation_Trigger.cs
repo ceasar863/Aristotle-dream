@@ -47,5 +47,6 @@ public class Animation_Trigger : MonoBehaviour
     public void UnFreeze_Anim()
     {
         player_aristotle.anim.speed = 1f;
+       
     }
 }

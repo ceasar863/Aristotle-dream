@@ -15,7 +15,7 @@ public class Player_Aristotle_Move_State : Player_Aristotle_On_Ground_State
     public override void Update()
     {
         base.Update();
-        player_aristotle.Set_Velocity(player_aristotle.move_speed , rb.linearVelocity.y);
+        player_aristotle.Set_Velocity(player_aristotle.move_speed*player_aristotle.movement_input.x , rb.linearVelocity.y);
 
         if (player_aristotle.movement_input.x == 0)
             state_machine.Change_State(player_aristotle.idle_state);

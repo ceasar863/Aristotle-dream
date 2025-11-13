@@ -17,7 +17,7 @@ public class Player_Aristotle_In_Air_State : Player_State
     {
         base.Update();
         if (player_aristotle.movement_input.x != 0)
-            player_aristotle.Set_Velocity(player_aristotle.move_speed*0.76f , rb.linearVelocity.y);   
+            player_aristotle.Set_Velocity(player_aristotle.move_speed*player_aristotle.movement_input.x*0.76f , rb.linearVelocity.y);   
     }
 
     public override void Exit()

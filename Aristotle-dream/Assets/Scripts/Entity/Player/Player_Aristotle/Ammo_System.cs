@@ -6,6 +6,7 @@ public class Ammo_System : MonoBehaviour
     private Entity_Player_Aristotle player_aristotle = Entity_Player_Aristotle.instance;
     [SerializeField] private Bullet bullet_prefab;
     [SerializeField] private Bullet current_bullet;
+    public GameObject crosshair;
 
     private void Awake()
     {

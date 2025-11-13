@@ -15,7 +15,7 @@ public class State_Machine
         current_state.Update();
     }
 
-    public void Change_State(Player_State new_state)
+    public void Change_State(Entity_State new_state)
     {
         current_state.Exit();
         current_state = new_state;

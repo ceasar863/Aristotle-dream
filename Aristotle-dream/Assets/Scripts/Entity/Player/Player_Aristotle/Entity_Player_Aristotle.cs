@@ -29,6 +29,7 @@ public class Entity_Player_Aristotle : Entity
     public GameObject shoot_point;
     public Camera main_camera;
     public Vector2 shoot_dire;
+    private GameObject crosshair;
     public bool is_aiming { get; private set; }
     
     #region//注册状态
@@ -75,6 +76,9 @@ public class Entity_Player_Aristotle : Entity
         aim_state = new Player_Aristotle_Aim_State(this, state_machine, "Aim");
         grab_state = new Player_Aristotle_Grab_State(this, state_machine, "Grab");
 
+        crosshair = GameObject.Instantiate(ammo_system.crosshair);
+        crosshair.gameObject.SetActive(false);
+
         state_machine.Initiate(idle_state);
     }
 
@@ -98,41 +102,20 @@ public class Entity_Player_Aristotle : Entity
         base.Update();   
     }
 
-    public void Set_Velocity(float x_velocity , float y_velocity)
+    public override void Set_Velocity(float x_velocity , float y_velocity)
     {
         Handle_Flip();
-        rb.linearVelocity = new Vector2(x_velocity * facing_dir, y_velocity);
+        rb.linearVelocity = new Vector2(x_velocity, y_velocity);
     }
 
-    public override  void Handle_Flip()
+    public override void Handle_Flip()
     {
-        if (is_facing_right && movement_input.x < 0)
-        {
-            is_facing_right = false;
-            facing_dir = -facing_dir;
-            Flip();
-        }
-        else if (!is_facing_right && movement_input.x > 0)
-        {
-            is_facing_right = true;
-            facing_dir = -facing_dir;
-            Flip();
-        };
+        base.Handle_Flip();
 
         if (state_machine.current_state == aim_state)
         {
-            if (is_facing_right && shoot_dire.x < 0)
-            {
-                is_facing_right = false;
-                facing_dir = -facing_dir;
-                Flip();
-            }
-            else if (!is_facing_right && shoot_dire.x > 0)
-            {
-                is_facing_right = true;
-                facing_dir = -facing_dir;
-                Flip();
-            }
+            if (is_facing_right && shoot_dire.x < 0) Flip();
+            else if (!is_facing_right && shoot_dire.x > 0) Flip();
         }
     }
 
@@ -144,13 +127,34 @@ public class Entity_Player_Aristotle : Entity
             return;
         }
 
-        RaycastHit2D target = Physics2D.Raycast(entity_center.transform.position, Direction_To_Mouse(), grab_radius, what_is_target);
-        
+        RaycastHit2D target = Physics2D.Raycast(entity_center.transform.position, Direction_To_Mouse(), grab_radius, what_is_target|what_is_ground);
+
+
+        if (target.collider != null)
+        {
+            if ((1 << target.collider.gameObject.layer) != what_is_ground)
+            {
+                crosshair.transform.position = target.collider.transform.position;
+                crosshair.SetActive(true);
+            }
+        }
+        else
+        {
+            crosshair.transform.position = new Vector2(9999, 9999);
+            crosshair.SetActive(false);
+        }
+
         if (player_input.Player.Shoot.WasPressedThisFrame())
         {
             if (target.collider == null)
             {
                 Debug.Log("无可抓取目标");
+                return;
+            }
+
+            if((1 << target.collider.gameObject.layer) == what_is_ground)
+            {
+                Debug.Log("中间有障碍物！");
                 return;
             }
 
@@ -163,6 +167,7 @@ public class Entity_Player_Aristotle : Entity
 
             //被捕获后销毁目标物体
             Destroy(target.collider.GetComponentInParent<Enemy>().gameObject);
+            crosshair.SetActive(false);
         }
     }
 
