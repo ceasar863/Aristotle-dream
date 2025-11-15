@@ -2,5 +2,6 @@ using UnityEngine;
 
 public enum Event_Type
 {
-    Command,
+    Change_Health_Bar,
+    Change_Max_Health_Bar,
 }

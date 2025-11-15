@@ -243,6 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98011749c43c2984496da4ea2a196a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_Bullet_Small_Stone
+  max_num_coulde_hit: 20
+  damage: 20
+  max_distance: 300
   speed: 14
   speed_reinforce_rate: 0.03
   max_speed: 26

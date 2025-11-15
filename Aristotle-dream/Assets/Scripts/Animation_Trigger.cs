@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Animation_Trigger : MonoBehaviour
 {
-    private Entity_Player_Aristotle player_aristotle;
+    private Entity entity;
     private State_Machine state_machine;
 
     private void Start()
     {
-        player_aristotle = Entity_Player_Aristotle.instance;
-        state_machine = player_aristotle.state_machine;
+        entity = GetComponentInParent<Entity>();
+        state_machine = entity.state_machine;
     }
 
     public void Do_Animation_Trigger()
@@ -36,17 +36,17 @@ public class Animation_Trigger : MonoBehaviour
 
     public void Just_Do_It()
     {
-        player_aristotle.state_machine.current_state.Should_Do_it();
+        entity.state_machine.current_state.Should_Do_it();
     }
 
     public void Freeze_Anim()
     {
-        player_aristotle.anim.speed = 0f;
+        entity.anim.speed = 0f;
     }
 
     public void UnFreeze_Anim()
     {
-        player_aristotle.anim.speed = 1f;
+        entity.anim.speed = 1f;
        
     }
 }

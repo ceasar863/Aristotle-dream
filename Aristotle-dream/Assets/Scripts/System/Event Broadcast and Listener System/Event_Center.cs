@@ -1,11 +1,27 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
-public class Event_Center
+public class Event_Center : MonoBehaviour
 {
+    public static Event_Center instance;
+
+    private void Awake()
+    {
+        if(instance!=null && instance!=this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     #region Main_Part
-    private static Dictionary<Event_Type, Delegate> event_table = new Dictionary<Event_Type, Delegate>();
+    private static readonly Dictionary<Event_Type, Delegate> event_table = new Dictionary<Event_Type, Delegate>();
 
     private static void On_Listener_Adding(Event_Type event_type , Delegate call_back)
     {
@@ -69,7 +85,7 @@ public class Event_Center
 
     public static void Broad_Cast(Event_Type event_type)
     {
-        Delegate dele;
+       Delegate dele;
        if(event_table.TryGetValue(event_type , out dele))
         {
             Call_Back call_back = dele as Call_Back;//If dele fail to convert , it'll be null.

@@ -19,7 +19,6 @@ public class Enemy_Skeleton_Move_State : Enemy_Skeleton_State
     public override void Update()
     {
         base.Update();
-        timer -= Time.deltaTime;
         skeleton.Set_Velocity(skeleton.move_speed*skeleton.Get_Parameter<int>("facing_dir") , skeleton.rb.linearVelocity.y);
 
         if (skeleton.next_wall || skeleton.next_brim)

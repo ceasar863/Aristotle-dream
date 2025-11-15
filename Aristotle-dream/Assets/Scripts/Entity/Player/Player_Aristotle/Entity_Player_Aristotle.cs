@@ -21,15 +21,16 @@ public class Entity_Player_Aristotle : Entity
 
     [Header("Grab Details")]
     public float grab_radius;
-    public LayerMask what_is_target;
+    public LayerMask what_is_grab_target;
     public Vector2 world_mouse_position;
-
+    public GameObject crosshair;
 
     [Header("Shoot Details")]
+    public LayerMask what_is_shoot_target;
     public GameObject shoot_point;
     public Camera main_camera;
     public Vector2 shoot_dire;
-    private GameObject crosshair;
+
     public bool is_aiming { get; private set; }
     
     #region//注册状态
@@ -127,7 +128,8 @@ public class Entity_Player_Aristotle : Entity
             return;
         }
 
-        RaycastHit2D target = Physics2D.Raycast(entity_center.transform.position, Direction_To_Mouse(), grab_radius, what_is_target|what_is_ground);
+        bool target_valid = false;
+        RaycastHit2D target = Physics2D.Raycast(entity_center.transform.position, Direction_To_Mouse(), grab_radius, what_is_grab_target|what_is_ground);
 
 
         if (target.collider != null)
@@ -135,14 +137,12 @@ public class Entity_Player_Aristotle : Entity
             if ((1 << target.collider.gameObject.layer) != what_is_ground)
             {
                 crosshair.transform.position = target.collider.transform.position;
-                crosshair.SetActive(true);
+                target_valid = true;
             }
         }
-        else
-        {
-            crosshair.transform.position = new Vector2(9999, 9999);
-            crosshair.SetActive(false);
-        }
+
+        if (target_valid) crosshair.SetActive(true);
+        else crosshair.SetActive(false);
 
         if (player_input.Player.Shoot.WasPressedThisFrame())
         {
@@ -152,7 +152,7 @@ public class Entity_Player_Aristotle : Entity
                 return;
             }
 
-            if((1 << target.collider.gameObject.layer) == what_is_ground)
+            if ((1 << target.collider.gameObject.layer) == what_is_ground)
             {
                 Debug.Log("中间有障碍物！");
                 return;
@@ -169,6 +169,7 @@ public class Entity_Player_Aristotle : Entity
             Destroy(target.collider.GetComponentInParent<Enemy>().gameObject);
             crosshair.SetActive(false);
         }
+        
     }
 
     private void Set_Grab_Domain_Visible(bool flag)
@@ -181,8 +182,9 @@ public class Entity_Player_Aristotle : Entity
         base.OnDrawGizmos();
 
         //抓取范围的可视化
-        Vector3 position = entity_center.transform.position;
-        Gizmos.DrawWireSphere(position , grab_radius);
+        //Gizmos.color = Color.blue;
+        //Vector3 position = entity_center.transform.position;
+        //Gizmos.DrawWireSphere(position , grab_radius);
     }
 
     private Vector2 Direction_To_Mouse()

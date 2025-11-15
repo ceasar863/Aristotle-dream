@@ -19,6 +19,7 @@ public class Player_Aristotle_On_Ground_State : Player_State
 
         if (player_aristotle.player_input.Player.Grab.IsPressed())
             player_aristotle.Try_Grab_Monster();
+        else player_aristotle.crosshair.SetActive(false);
 
         if (player_aristotle.is_aiming)
             state_machine.Change_State(player_aristotle.aim_state);

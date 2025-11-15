@@ -3,7 +3,6 @@ using UnityEngine;
 public class Object_Bullet_Small_Stone : Bullet
 {
     private float speed_rate;
-
     protected override void Awake()
     {
         base.Awake();
@@ -13,7 +12,7 @@ public class Object_Bullet_Small_Stone : Bullet
 
     protected override void Start()
     {
-
+        base.Start();
     }
 
     protected override void Update()

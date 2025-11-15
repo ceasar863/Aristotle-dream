@@ -11,7 +11,7 @@ public class Entity : MonoBehaviour,IEntity_Interface
 
     public LayerMask what_is_ground;
 
-    public float ground_check_distance = 1.5f;
+    public float ground_check_distance;
     protected bool is_on_ground;
     protected bool is_in_air;
     protected bool is_facing_right=true;
@@ -30,7 +30,7 @@ public class Entity : MonoBehaviour,IEntity_Interface
 
     protected virtual void Start()
     {
-        ground_check_distance = 1.5f;
+        ground_check_distance=2.2f;
         is_facing_right = true;
         is_on_ground = true;
         facing_dir = 1;
@@ -47,8 +47,7 @@ public class Entity : MonoBehaviour,IEntity_Interface
 
     public void Flip()
     {
-        anim.gameObject.transform.Rotate(0, 180, 0);
-        Debug.Log("hey!");
+        transform.gameObject.transform.Rotate(0, 180, 0);;
         is_facing_right = !is_facing_right;
         facing_dir = -facing_dir;
     }
@@ -57,12 +56,10 @@ public class Entity : MonoBehaviour,IEntity_Interface
     {
         if (is_facing_right && rb.linearVelocity.x < 0)
         {
-            Debug.Log("I found you!");
             Flip();
         }
         else if (!is_facing_right && rb.linearVelocity.x > 0)
         {
-            Debug.Log("I found you!");
             Flip();
         }
     }
@@ -70,35 +67,10 @@ public class Entity : MonoBehaviour,IEntity_Interface
     public virtual void OnDrawGizmos()
     {
         //地面检测线
-        Vector3 position = entity_center.transform.position;
-        Gizmos.DrawLine(position, new Vector3(position.x, position.y - ground_check_distance, position.z));
+        Gizmos.color = Color.red;
+        Vector2 position = entity_center.transform.position;
+        Gizmos.DrawLine(position, new Vector2(position.x, position.y - ground_check_distance));
 
-    }
-
-    public T Get_Parameter<T>(string target)
-    {
-        object value = target switch
-        {
-            "is_facing_right" => is_facing_right,
-            "is_on_ground" => is_on_ground,
-            "is_in_air" => is_in_air,
-            "facing_dir" => facing_dir,
-            _ => null
-        };
-
-        if(value == null)
-        {
-            Debug.LogError("不存在该属性字段 -- " + target);
-            return default;
-        }
-
-        if(!(value is T))
-        {
-            Debug.LogError("类型不匹配 -- " + target);
-            return default;
-        }
-
-        return (T)value;
     }
 
     public virtual void Set_Velocity(float x_velocity, float y_velocity)
@@ -115,5 +87,31 @@ public class Entity : MonoBehaviour,IEntity_Interface
     public virtual void Die()
     {
         
+    }
+
+    public T Get_Parameter<T>(string target)
+    {
+        object value = target switch
+        {
+            "is_facing_right" => is_facing_right,
+            "is_on_ground" => is_on_ground,
+            "is_in_air" => is_in_air,
+            "facing_dir" => facing_dir,
+            _ => null
+        };
+
+        if (value == null)
+        {
+            Debug.LogError("不存在该属性字段 -- " + target);
+            return default;
+        }
+
+        if (!(value is T))
+        {
+            Debug.LogError("类型不匹配 -- " + target);
+            return default;
+        }
+
+        return (T)value;
     }
 }
