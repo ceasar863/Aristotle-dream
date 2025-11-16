@@ -14,6 +14,7 @@ public class Entity : MonoBehaviour,IEntity_Interface
     public float ground_check_distance;
     protected bool is_on_ground;
     protected bool is_in_air;
+    protected bool is_dead;
     protected bool is_facing_right=true;
     protected int facing_dir=1;
 
@@ -33,6 +34,7 @@ public class Entity : MonoBehaviour,IEntity_Interface
         ground_check_distance=2.2f;
         is_facing_right = true;
         is_on_ground = true;
+        is_dead = false;
         facing_dir = 1;
     }
 
@@ -86,7 +88,13 @@ public class Entity : MonoBehaviour,IEntity_Interface
 
     public virtual void Die()
     {
-        
+
+        Destroy(gameObject);
+    }
+
+    public virtual void Set_Dead_State(bool flag)
+    {
+        is_dead = flag;
     }
 
     public T Get_Parameter<T>(string target)
@@ -97,6 +105,7 @@ public class Entity : MonoBehaviour,IEntity_Interface
             "is_on_ground" => is_on_ground,
             "is_in_air" => is_in_air,
             "facing_dir" => facing_dir,
+            "is_dead" => is_dead,
             _ => null
         };
 

@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class UI_Health_System : MonoBehaviour
 {
-    [SerializeField] private Slider red_bar;
-    [SerializeField] private Slider white_bar;
+    public Slider red_bar;
+    public Slider white_bar;
 
     [Header("Health Details")]
     [SerializeField] private float white_bar_wait;
@@ -20,12 +20,12 @@ public class UI_Health_System : MonoBehaviour
 
     private void OnEnable()
     {
-        Event_Center.Add_Listener<float>(Event_Type.Change_Health_Bar, Change_Health_Bar);
+        Event_Center.Add_Listener<float,Transform>(Event_Type.Change_Health_Bar, Change_Health_Bar);
     }
 
     private void OnDisable()
     {
-        Event_Center.Remove_Listener<float>(Event_Type.Change_Health_Bar, Change_Health_Bar);   
+        Event_Center.Remove_Listener<float,Transform>(Event_Type.Change_Health_Bar, Change_Health_Bar);   
     }
 
     private void Awake()
@@ -51,8 +51,15 @@ public class UI_Health_System : MonoBehaviour
         white_bar_rect.rotation = Quaternion.identity;
     }
 
-    public void Change_Health_Bar(float target_percent)
+    public void Cancel_Broadcast()
     {
+        Event_Center.Remove_Listener<float, Transform>(Event_Type.Change_Health_Bar, Change_Health_Bar);
+    }
+
+    public void Change_Health_Bar(float target_percent , Transform target)
+    {
+        if (target != this.transform) return;
+
         Change_Red_Bar(target_percent);
         Change_White_Bar(target_percent);
     }

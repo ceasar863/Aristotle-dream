@@ -28,7 +28,7 @@ public class Entity_Health : MonoBehaviour,IEntity_Interface
 
         if(!Mathf.Approximately(old_percent, new_percent))
         {
-            Event_Center.Broad_Cast<float>(Event_Type.Change_Health_Bar, new_percent);
+            Event_Center.Broad_Cast<float,Transform>(Event_Type.Change_Health_Bar, new_percent , this.transform);
         }
     }
 

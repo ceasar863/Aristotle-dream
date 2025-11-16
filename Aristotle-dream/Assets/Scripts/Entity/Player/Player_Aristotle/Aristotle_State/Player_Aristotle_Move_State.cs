@@ -19,6 +19,9 @@ public class Player_Aristotle_Move_State : Player_Aristotle_On_Ground_State
 
         if (player_aristotle.movement_input.x == 0)
             state_machine.Change_State(player_aristotle.idle_state);
+
+        if (player_aristotle.player_input.Player.Run.IsPressed())
+            state_machine.Change_State(player_aristotle.run_state);
     }
 
     public override void Exit()

@@ -18,6 +18,7 @@ public class Entity_Player_Aristotle : Entity
     [Header("Move Details")]
     public float move_speed = 6f;
     public float jump_force = 16f;
+    public float run_speed = 22.5f;
 
     [Header("Grab Details")]
     public float grab_radius;
@@ -41,6 +42,7 @@ public class Entity_Player_Aristotle : Entity
     public Player_Aristotle_Fall_State fall_state { get; private set; }
     public Player_Aristotle_Aim_State aim_state { get; private set; }
     public Player_Aristotle_Grab_State grab_state { get; private set; }
+    public Player_Aristotle_Run_State run_state { get; private set; }
 
     #endregion
 
@@ -76,6 +78,7 @@ public class Entity_Player_Aristotle : Entity
         fall_state = new Player_Aristotle_Fall_State(this, state_machine, "Jump_Fall");
         aim_state = new Player_Aristotle_Aim_State(this, state_machine, "Aim");
         grab_state = new Player_Aristotle_Grab_State(this, state_machine, "Grab");
+        run_state = new Player_Aristotle_Run_State(this, state_machine, "Run");
 
         crosshair = GameObject.Instantiate(ammo_system.crosshair);
         crosshair.gameObject.SetActive(false);
@@ -169,7 +172,6 @@ public class Entity_Player_Aristotle : Entity
             Destroy(target.collider.GetComponentInParent<Enemy>().gameObject);
             crosshair.SetActive(false);
         }
-        
     }
 
     private void Set_Grab_Domain_Visible(bool flag)

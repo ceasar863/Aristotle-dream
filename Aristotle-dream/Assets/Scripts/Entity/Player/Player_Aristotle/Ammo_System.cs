@@ -63,4 +63,10 @@ public class Ammo_System : MonoBehaviour
     {
         current_bullet = null;
     }
+
+    [ContextMenu("---Give_Bullet---")]
+    public void Give_Bullet()
+    {
+        Generate_Bullet();
+    }
 }

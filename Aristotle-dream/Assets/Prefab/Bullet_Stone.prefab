@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_Bullet_Stone
   max_num_coulde_hit: 20
-  damage: 20
+  damage: 100
   max_distance: 300
   speed: 14
   speed_reinforce_rate: 0.2

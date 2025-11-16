@@ -4,6 +4,7 @@ public class Enemy : Entity
 {
     public Bullet_Sort_List bullet_sort;
     public Bullet bullet;
+    public float dead_destroy_time;
 
     [Header("Move Details")]
     public float move_speed;
@@ -16,6 +17,7 @@ public class Enemy : Entity
     [SerializeField] private float brim_check_distance;
     [SerializeField] private float check_player_distance;
     [SerializeField] private float enemy_attack_distance;
+    
 
     public RaycastHit2D player_target { get; private set; }
     public bool has_checked_player { get; private set; }

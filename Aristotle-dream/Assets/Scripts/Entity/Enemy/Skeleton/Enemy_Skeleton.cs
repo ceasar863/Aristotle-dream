@@ -7,7 +7,9 @@ public class Enemy_Skeleton : Enemy
     public Enemy_Skeleton_Move_State skeleton_move_state { get; private set; }
     public Enemy_Skeleton_Combat_State skeleton_combat_state { get; private set; } 
     public Enemy_Skeleton_Attack_State skeleton_attack_state { get; private set; }
-
+    public Enemy_Skeleton_Dead_State skeleton_dead_state { get; private set; }
+    
+    
     #endregion
     protected override void Awake()
     {
@@ -22,6 +24,7 @@ public class Enemy_Skeleton : Enemy
         skeleton_move_state = new Enemy_Skeleton_Move_State(this, state_machine, "Move");
         skeleton_combat_state = new Enemy_Skeleton_Combat_State(this, state_machine, "Combat");
         skeleton_attack_state = new Enemy_Skeleton_Attack_State(this, state_machine, "Attack");
+        skeleton_dead_state = new Enemy_Skeleton_Dead_State(this, state_machine, "Dead");
 
         state_machine.Initiate(skeleton_idle_state);
     }

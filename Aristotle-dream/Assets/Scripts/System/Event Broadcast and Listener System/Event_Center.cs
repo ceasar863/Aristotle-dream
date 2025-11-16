@@ -28,7 +28,7 @@ public class Event_Center : MonoBehaviour
         if(!event_table.ContainsKey(event_type))
         {
             //If we dont't have it , add it.
-            event_table.Add(event_type, call_back);
+            event_table.Add(event_type, null);
         }
 
         Delegate dele = event_table[event_type];

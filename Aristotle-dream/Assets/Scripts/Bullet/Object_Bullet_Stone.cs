@@ -43,7 +43,6 @@ public class Object_Bullet_Stone : Bullet
         {
             float new_speed = speed * (1 + speed_reinforce_rate);
             speed = Mathf.Clamp(new_speed, 0, max_speed);
-            Debug.Log(speed);
             timer = 0;
         }
     }
