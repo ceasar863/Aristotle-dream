@@ -17,19 +17,22 @@ public class Enemy : Entity
     [SerializeField] private float brim_check_distance;
     [SerializeField] private float check_player_distance;
     [SerializeField] private float enemy_attack_distance;
-    
+
+
+    [Header("Combat Details")]
+    public bool could_attack;
+    public float attack_distance;
+    public float attack_damage;
 
     public RaycastHit2D player_target { get; private set; }
     public bool has_checked_player { get; private set; }
-    public bool could_attack;
     public bool next_brim { get; private set; }
     public bool next_wall { get; private set; }
-
-
+    public LayerMask what_is_player;
+    
     [Space]
-    [SerializeField] private LayerMask what_is_player;
-    [SerializeField] private GameObject brim_check_point;
-    [SerializeField] private GameObject wall_check_point;
+    [SerializeField] protected GameObject brim_check_point;
+    [SerializeField] protected GameObject wall_check_point;
 
 
     protected override void Start()

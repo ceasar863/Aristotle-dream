@@ -615,6 +615,7 @@ GameObject:
   - component: {fileID: 1379637043683121502}
   - component: {fileID: 1880854992197606545}
   - component: {fileID: 8779513879235117535}
+  - component: {fileID: 499168514536876846}
   m_Layer: 7
   m_Name: Enemy_Skeleton
   m_TagString: Untagged
@@ -725,6 +726,7 @@ MonoBehaviour:
   entity_center: {fileID: 8389955623568700493}
   bullet_sort: 1
   bullet: {fileID: 4522200327014738707, guid: 441f00fd336c05f4abe2db4961314574, type: 3}
+  dead_destroy_time: 5
   move_speed: 3
   idle_time: 5
   combat_time: 3.25
@@ -734,6 +736,8 @@ MonoBehaviour:
   check_player_distance: 18
   enemy_attack_distance: 2.2
   could_attack: 0
+  attack_distance: 1.3
+  attack_damage: 20
   what_is_player:
     serializedVersion: 2
     m_Bits: 8
@@ -770,6 +774,18 @@ MonoBehaviour:
   white_bar: {fileID: 5339396980599551479}
   white_bar_wait: 0.2
   white_bar_change_speed: 1.8
+--- !u!114 &499168514536876846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4034242856179462260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6366233234442d4f8219172bfd620ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity_Combat
 --- !u!1 &4053854396887407450
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,7 +832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5616554402889603464}
   m_Layer: 7
-  m_Name: Brim_Check
+  m_Name: Brim&Attack_Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -831,7 +847,7 @@ Transform:
   m_GameObject: {fileID: 4388359578817618771}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8999996, y: -0.96, z: 0}
+  m_LocalPosition: {x: 1.36, y: -0.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

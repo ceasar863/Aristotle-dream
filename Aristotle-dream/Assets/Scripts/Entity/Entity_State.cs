@@ -12,10 +12,12 @@ public class Entity_State
 
     protected float timer;
     protected string state_name;
-    protected bool can_change_state;
-    protected bool trigger_called;
-    protected bool should_do;
-    protected bool have_done;
+
+    protected bool can_change_state;//是否可以转换状态
+    protected bool trigger_called;//动画触发器
+
+    protected bool should_do;//判断是否开始对应行为
+    protected bool have_done;//判断行为是否结束
 
     public Entity_State(Entity entity , State_Machine state_machine ,string name)
     {

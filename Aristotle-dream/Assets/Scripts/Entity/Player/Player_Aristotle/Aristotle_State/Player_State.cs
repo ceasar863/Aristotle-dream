@@ -19,6 +19,8 @@ public class Player_State : Entity_State
     public override void Update()
     {
         base.Update();
+        if (player_aristotle.GetComponent<Entity_Health>().current_health_percent() <= 0)
+            state_machine.Change_State(player_aristotle.dead_state);
     }
 
     public override void Exit()

@@ -1,7 +1,10 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Enemy_Skeleton : Enemy
 {
+    public Transform attack_start_point { get; private set; }
+
     #region
     public Enemy_Skeleton_Idle_State skeleton_idle_state { get; private set; }
     public Enemy_Skeleton_Move_State skeleton_move_state { get; private set; }
@@ -26,11 +29,22 @@ public class Enemy_Skeleton : Enemy
         skeleton_attack_state = new Enemy_Skeleton_Attack_State(this, state_machine, "Attack");
         skeleton_dead_state = new Enemy_Skeleton_Dead_State(this, state_machine, "Dead");
 
+        attack_start_point = brim_check_point.transform;
         state_machine.Initiate(skeleton_idle_state);
     }
 
     protected override void Update()
     {
         base.Update();
+    }
+
+
+    public override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+
+        //攻击判定区[ 偷个懒用的边缘检测线的点:> ]
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(brim_check_point.transform.position, attack_distance);
     }
 }

@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,14 +24,17 @@ public class Entity_Player_Aristotle : Entity
     [Header("Grab Details")]
     public float grab_radius;
     public LayerMask what_is_grab_target;
-    public Vector2 world_mouse_position;
     public GameObject crosshair;
 
     [Header("Shoot Details")]
     public LayerMask what_is_shoot_target;
     public GameObject shoot_point;
-    public Camera main_camera;
     public Vector2 shoot_dire;
+
+
+    public Vector3 world_mouse_position;
+    public Camera main_camera;
+    private Camera_Follow_Effect camera_follow_effect;
 
     public bool is_aiming { get; private set; }
     
@@ -43,6 +47,7 @@ public class Entity_Player_Aristotle : Entity
     public Player_Aristotle_Aim_State aim_state { get; private set; }
     public Player_Aristotle_Grab_State grab_state { get; private set; }
     public Player_Aristotle_Run_State run_state { get; private set; }
+    public Player_Aristotle_Dead_State dead_state { get; private set; }
 
     #endregion
 
@@ -60,6 +65,7 @@ public class Entity_Player_Aristotle : Entity
             DontDestroyOnLoad(this.gameObject);
         }
 
+        camera_follow_effect = FindFirstObjectByType<Camera_Follow_Effect>();
         ammo_system = GetComponent<Ammo_System>();
         player_input = new Player_Input();
         
@@ -68,7 +74,6 @@ public class Entity_Player_Aristotle : Entity
     protected override void Start()
     {
         base.Start();
-
         entity_center.GetComponent<SpriteRenderer>().enabled = false;
 
         idle_state = new Player_Aristotle_Idle_State(this, state_machine, "Idle");
@@ -79,6 +84,7 @@ public class Entity_Player_Aristotle : Entity
         aim_state = new Player_Aristotle_Aim_State(this, state_machine, "Aim");
         grab_state = new Player_Aristotle_Grab_State(this, state_machine, "Grab");
         run_state = new Player_Aristotle_Run_State(this, state_machine, "Run");
+        dead_state = new Player_Aristotle_Dead_State(this, state_machine, "Dead");
 
         crosshair = GameObject.Instantiate(ammo_system.crosshair);
         crosshair.gameObject.SetActive(false);
@@ -99,12 +105,34 @@ public class Entity_Player_Aristotle : Entity
         player_input.Player.Grab.canceled += ctx => Set_Grab_Domain_Visible(false);
     }
 
+
+    #region 鼠标和摄像机相关
     protected override void Update()
     {
-        world_mouse_position = main_camera.ScreenToWorldPoint(Input.mousePosition);
+        Update_World_Position();
         shoot_dire = Direction_To_Mouse();
-        base.Update();   
+
+        if (is_falling) camera_follow_effect.Falling_And_Uping_Adjust(true);
+        else if (is_uping) camera_follow_effect.Falling_And_Uping_Adjust(false);
+
+        base.Update();
     }
+
+    private void Update_World_Position()
+    {
+        Vector3 test_position = Input.mousePosition;
+        test_position.z = 10;
+        world_mouse_position = main_camera.ScreenToWorldPoint(test_position);
+    }
+
+    private Vector3 Direction_To_Mouse()
+    {
+        Vector3 player_position = entity_center.transform.position;
+        Vector3 direction = world_mouse_position - player_position;
+        return direction.normalized;
+    }
+    #endregion
+
 
     public override void Set_Velocity(float x_velocity , float y_velocity)
     {
@@ -114,7 +142,16 @@ public class Entity_Player_Aristotle : Entity
 
     public override void Handle_Flip()
     {
-        base.Handle_Flip();
+        if (is_facing_right && rb.linearVelocity.x < 0)
+        {
+            Flip();
+            camera_follow_effect.Start_Follow();
+        }
+        else if (!is_facing_right && rb.linearVelocity.x > 0)
+        {
+            Flip();
+            camera_follow_effect.Start_Follow();
+        }
 
         if (state_machine.current_state == aim_state)
         {
@@ -187,13 +224,5 @@ public class Entity_Player_Aristotle : Entity
         //Gizmos.color = Color.blue;
         //Vector3 position = entity_center.transform.position;
         //Gizmos.DrawWireSphere(position , grab_radius);
-    }
-
-    private Vector2 Direction_To_Mouse()
-    {
-        Vector2 player_position = entity_center.transform.position;
-
-        Vector2 direction = world_mouse_position - player_position;
-        return direction.normalized;
     }
 }

@@ -15,6 +15,8 @@ public class Entity : MonoBehaviour,IEntity_Interface
     protected bool is_on_ground;
     protected bool is_in_air;
     protected bool is_dead;
+    protected bool is_uping;
+    protected bool is_falling;
     protected bool is_facing_right=true;
     protected int facing_dir=1;
 
@@ -35,16 +37,39 @@ public class Entity : MonoBehaviour,IEntity_Interface
         is_facing_right = true;
         is_on_ground = true;
         is_dead = false;
+        is_falling = false;
+        is_uping = false;
         facing_dir = 1;
     }
 
     protected virtual void Update()
     {
         anim.SetFloat("Y_Velocity", rb.linearVelocity.y);
+        Update_Falling_And_Uping();
+
         is_on_ground = Physics2D.Raycast(entity_center.transform.position, Vector2.down, ground_check_distance, what_is_ground);
         is_in_air = !is_on_ground;
 
         state_machine.Update_State();
+    }
+
+    private void Update_Falling_And_Uping()
+    {
+        if (rb.linearVelocity.y > 0)
+        {
+            is_uping = true;
+            is_falling = false;
+        }
+        else if (rb.linearVelocity.y < 0)
+        {
+            is_uping = false;
+            is_falling = true;
+        }
+        else
+        {
+            is_uping = false;
+            is_falling = false;
+        }
     }
 
     public void Flip()
@@ -106,6 +131,8 @@ public class Entity : MonoBehaviour,IEntity_Interface
             "is_in_air" => is_in_air,
             "facing_dir" => facing_dir,
             "is_dead" => is_dead,
+            "is_uping" => is_uping,
+            "is_falling" => is_falling,
             _ => null
         };
 
