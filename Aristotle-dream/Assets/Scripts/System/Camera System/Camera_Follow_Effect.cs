@@ -20,6 +20,7 @@ public class Camera_Follow_Effect : MonoBehaviour
     [SerializeField] private float conversion_duration;
 
     public CinemachineCamera current_cinemachine_camera;
+    
     private Entity_Player_Aristotle player_aristotle;
     private CinemachinePositionComposer position_composer;
 

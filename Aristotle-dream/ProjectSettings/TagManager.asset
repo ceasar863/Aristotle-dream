@@ -65,5 +65,8 @@ TagManager:
   - name: Aim_Line
     uniqueID: 2256268809
     locked: 0
+  - name: Item
+    uniqueID: 1343165819
+    locked: 0
   m_RenderingLayers:
   - Default

@@ -31,7 +31,6 @@ public class Entity_Player_Aristotle : Entity
     public GameObject shoot_point;
     public Vector2 shoot_dire;
 
-
     public Vector3 world_mouse_position;
     public Camera main_camera;
     private Camera_Follow_Effect camera_follow_effect;

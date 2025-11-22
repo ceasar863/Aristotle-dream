@@ -24,7 +24,6 @@ public class Camera_Control_Trigger : MonoBehaviour
 
             if(custom_inspector_objects.swap_cameras && custom_inspector_objects.camera_on_left!=null &&custom_inspector_objects.camera_on_right!=null)
             {
-                Debug.Log(exit_direction);
                 Camera_Follow_Effect.instance.Swap_Camera(custom_inspector_objects.camera_on_left, custom_inspector_objects.camera_on_right, exit_direction);
             }
 

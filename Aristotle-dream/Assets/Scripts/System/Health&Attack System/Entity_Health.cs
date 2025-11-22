@@ -75,7 +75,7 @@ public class Entity_Health : MonoBehaviour,IEntity_Interface
 
     public void Modify_Health(float modify)
     {
-        float new_health = current_health+modify;
+        float new_health = Mathf.Clamp(current_health+modify , 0 , max_health);
         Update_Health(new_health);
     }
 
