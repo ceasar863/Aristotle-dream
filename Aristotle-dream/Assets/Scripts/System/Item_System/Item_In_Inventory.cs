@@ -2,10 +2,10 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class Item_In_Inventory
+public class Item_In_Inventory//插槽内的物品数据
 {
-    public Item item;
-    public int current_num;
+    public Item item;//物品
+    public int current_num;//当前插槽内叠了几个
 
     public Item_In_Inventory(Item item, int num)
     {
