@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    public Bullet_Sort_List bullet_sort;
-    public Bullet bullet;
+    public GameObject bullet;
     public float dead_destroy_time;
 
     [Header("Move Details")]
@@ -58,7 +57,7 @@ public class Enemy : Entity
         else has_checked_player = false;
     }
 
-    public virtual Bullet Was_Grabed()
+    public virtual GameObject Was_Grabed()
     {
         return bullet;
     }

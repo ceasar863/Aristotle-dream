@@ -3,15 +3,20 @@ using UnityEngine;
 
 public class Ammo_System : MonoBehaviour
 {
-    private Entity_Player_Aristotle player_aristotle = Entity_Player_Aristotle.instance;
-    [SerializeField] private Bullet bullet_prefab;
+    private Entity_Player_Aristotle player_aristotle;
+    [SerializeField] private GameObject bullet_prefab;
     [SerializeField] private Bullet current_bullet;
     public GameObject crosshair;
 
     private void Awake()
     {
+        player_aristotle = Entity_Player_Aristotle.instance;
+    }
+
+    private void Start()
+    {
         current_bullet = null;
-        Generate_Bullet();
+        Generate_Bullet(bullet_prefab);
     }
 
     private void Reinforce_Bullet()//加速器机制，随着装在弹匣的时间越长,子弹威力和其特性越强
@@ -23,7 +28,6 @@ public class Ammo_System : MonoBehaviour
     private void Update()
     {
         Reinforce_Bullet();
-
     }
 
     public Bullet Get_Current_Bullet()
@@ -41,22 +45,20 @@ public class Ammo_System : MonoBehaviour
         current_bullet.gameObject.SetActive(true);
         current_bullet.transform.position = start_point;
         current_bullet.Set_Parameter();
-        
     }
 
-    public void Generate_Bullet()
+    public void Generate_Bullet(GameObject bullet)
     {
-        current_bullet = GameObject.Instantiate(bullet_prefab);
+        if (bullet == null) return;
+
+        current_bullet = Bullet_Pool_Manager.instance.Get_Item_Object_From_Pool(bullet, player_aristotle.transform.position);
         current_bullet.gameObject.SetActive(false);
     }
 
-    public void Set_Bullet(Bullet bullet)//拾取时实例化
+    public void Set_Bullet(GameObject bullet)//拾取时实例化
     {
-        if (bullet_prefab != null && current_bullet == null)//Debug用的，正常游戏没这个
-        {
-            current_bullet = GameObject.Instantiate(bullet);
-            current_bullet.gameObject.SetActive(false);
-        }
+        if (bullet_prefab != null && current_bullet == null)
+            Generate_Bullet(bullet);
     }
 
     public void Clear_Bullet()
@@ -67,6 +69,6 @@ public class Ammo_System : MonoBehaviour
     [ContextMenu("---Give_Bullet---")]
     public void Give_Bullet()
     {
-        Generate_Bullet();
+        Generate_Bullet(bullet_prefab);
     }
 }

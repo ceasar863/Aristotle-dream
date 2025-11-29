@@ -55,7 +55,7 @@ public class Bullet : MonoBehaviour
         if(Vector2.Distance(transform.position , player_aristotle.transform.position)>max_distance)//如果飞出一定范围，那么就销毁子弹
         {
             Debug.Log("已经销毁飞出最大距离的子弹");
-            Destroy(gameObject);
+            Bullet_Pool_Manager.instance.Recycle_Item_To_Pool(this);
         }
     }
 
@@ -104,8 +104,9 @@ public class Bullet : MonoBehaviour
 
     }
 
-    public virtual void Characsteristic()//设置子弹特性
+    public virtual void Bullet_Effect()//设置子弹特性
     {
 
     }
+
 }

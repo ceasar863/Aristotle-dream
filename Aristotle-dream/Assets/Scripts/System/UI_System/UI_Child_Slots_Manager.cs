@@ -11,10 +11,15 @@ public class UI_Child_Slots_Manager : MonoBehaviour
     {
         ui_expand_child_slots = GetComponentsInChildren<UI_Child_Shortcut_Slot>();
     }
+
     private void Start()
     {
         inventory = Entity_Player_Aristotle.instance.GetComponent<Inventory_System>();
-        for (int i = 0; i < inventory.inventory.Length; i++)
+
+        foreach (UI_Child_Shortcut_Slot child_slot in ui_expand_child_slots)
+            child_slot.gameObject.SetActive(false);
+
+        for (int i = 0; i < ui_expand_child_slots.Length; i++)
             ui_expand_child_slots[i].child_slot_index = i;
         
         switch_case = true;

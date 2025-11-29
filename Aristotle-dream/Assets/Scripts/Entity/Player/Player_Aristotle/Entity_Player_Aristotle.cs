@@ -201,7 +201,8 @@ public class Entity_Player_Aristotle : Entity
             state_machine.Change_State(grab_state);
 
             //成功抓取转化为弹药补给给玩家
-            Bullet bullet = target.collider.gameObject.GetComponentInParent<Enemy>().Was_Grabed();
+            //Bullet bullet = Bullet_Pool_Manager.instance.Spawn_Item_Object() 
+            GameObject bullet = target.collider.gameObject.GetComponentInParent<Enemy>().Was_Grabed();
             ammo_system.Set_Bullet(bullet);
 
             //被捕获后销毁目标物体

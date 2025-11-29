@@ -74,29 +74,29 @@ public class Inventory_System : MonoBehaviour
             Debug.Log("You have no item!!!");
             return;
         }
-        current_item.item.Use_Effect();
+        current_item.item.Item_Effect();
         Try_Consume_One(current_item.item , current_item_id);
         Event_Center.Broad_Cast(Event_Type.Update_Item_Slot);
     }
 
-   public void Try_Consume_One(Item item)
-    {
-        for(int i=0; i<inventory.Length; i++)
-        {
-            if (inventory[i]!=null && inventory[i].item!=null && inventory[i].current_num-1>=1)
-            {
-                inventory[i].current_num -= 1;
-                break;
-            }
-            else if (inventory[i] != null && inventory[i].item!=null && inventory[i].current_num-1==0)
-            {
-                inventory[i].item = null;
-                inventory[i].current_num = 0;
-                Destroy(item.gameObject);
-                break;
-            }
-        }
-    }
+   //public void Try_Consume_One(Item item)
+   // {
+   //     for(int i=0; i<inventory.Length; i++)
+   //     {
+   //         if (inventory[i]!=null && inventory[i].item!=null && inventory[i].current_num-1>=1)
+   //         {
+   //             inventory[i].current_num -= 1;
+   //             break;
+   //         }
+   //         else if (inventory[i] != null && inventory[i].item!=null && inventory[i].current_num-1==0)
+   //         {
+   //             inventory[i].item = null;
+   //             inventory[i].current_num = 0;
+   //             Destroy(item.gameObject);
+   //             break;
+   //         }
+   //     }
+   // }
 
     public void Try_Consume_One(Item item , int id)
     {
@@ -108,7 +108,6 @@ public class Inventory_System : MonoBehaviour
         {
             inventory[id].item = null;
             inventory[id].current_num = 0;
-            Destroy(item.gameObject);
         }
     }
 }

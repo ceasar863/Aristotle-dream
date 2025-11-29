@@ -52,7 +52,6 @@ public class Event_Center : MonoBehaviour
             {
                 throw new Exception(string.Format("Remove Listener wrong: try to remove different type , presently is {1} , but you want to remove {2}" , dele.GetType() , call_back.GetType()));
             }
-
         }
         else
         {

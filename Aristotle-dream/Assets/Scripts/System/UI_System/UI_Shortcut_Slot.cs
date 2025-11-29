@@ -37,7 +37,6 @@ public class UI_Shortcut_Slot : UI_Slot
             Item_In_Inventory item = player_inventory.inventory[i];
             if (item==null || item.item == null) item = default_item;
 
-            //Debug.Log(item.item.item_data.name);
             slot_manager.ui_expand_child_slots[i].Update_UI_Slot(item);
         }
 

@@ -18,8 +18,8 @@ public class UI_Child_Shortcut_Slot : UI_Slot
 
     public void Change_Shortcut_Slot()
     {
-        player_inventory.current_item = this.item;
+        player_inventory.current_item = this.item_in_slot;
         player_inventory.current_item_id = child_slot_index;
-        shortcut_slot.Update_UI_Slot(item);
+        shortcut_slot.Update_UI_Slot(item_in_slot);
     }
 }

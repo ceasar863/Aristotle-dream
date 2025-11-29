@@ -4,9 +4,9 @@ public class Item_Heal_Bottle : Item
 {
     public float heal_amount;
 
-    public override void Use_Effect()
+    public override void Item_Effect()
     {
-        base.Use_Effect();
+        base.Item_Effect();
         Entity_Player_Aristotle.instance.GetComponent<Entity_Health>().Heal(heal_amount);
     }
 
