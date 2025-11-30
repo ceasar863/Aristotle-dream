@@ -10,11 +10,12 @@ public class Ammo_System : MonoBehaviour
 
     private void Awake()
     {
-        player_aristotle = Entity_Player_Aristotle.instance;
+        
     }
 
     private void Start()
     {
+        player_aristotle = Entity_Player_Aristotle.instance;
         current_bullet = null;
         Generate_Bullet(bullet_prefab);
     }

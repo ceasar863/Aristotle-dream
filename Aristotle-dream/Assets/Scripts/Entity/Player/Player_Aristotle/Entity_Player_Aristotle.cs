@@ -206,7 +206,8 @@ public class Entity_Player_Aristotle : Entity
             ammo_system.Set_Bullet(bullet);
 
             //被捕获后销毁目标物体
-            Destroy(target.collider.GetComponentInParent<Enemy>().gameObject);
+            Enemy_Pool_Manager.instance.Recycle_Item_To_Pool(target.collider.GetComponentInParent<Enemy>());
+            //Destroy(target.collider.GetComponentInParent<Enemy>().gameObject);
             crosshair.SetActive(false);
         }
     }

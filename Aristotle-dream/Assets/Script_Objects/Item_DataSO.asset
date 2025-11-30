@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52de828e6b1a64845854ccce2b4e856f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ca7bcee2a2a12a488b095dcf0361aff, type: 3}
   m_Name: Item_DataSO
   m_EditorClassIdentifier: Assembly-CSharp::Item_Data_So
-  item_name: Default
+  item_name: Default_Item
   item_type: 0
   stack_limit: 325
   item_icon: {fileID: 4095115140296977323, guid: 23dbd990f15cc834eae9b1a05caa73c3, type: 3}
