@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83dd7a9d25e933241b6f795052cc73da, type: 3}
+  m_Name: Sword_1
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.Weapon_Data_So
+  <runtime_animator_controller>k__BackingField: {fileID: 9100000, guid: 73e53570e06a0b84ba79ce76766105bf, type: 2}
+  <number_of_attacks>k__BackingField: 3
+  <component_datas>k__BackingField:
+  - rid: 1283878310661849217
+  - rid: 1283878332459122841
+  - rid: 1283878354880561312
+  - rid: 1283878378303127676
+  - rid: 1283878378303127707
+  references:
+    version: 2
+    RefIds:
+    - rid: 1283878310661849217
+      type: {class: Weapon_Sprite_Component_Data, ns: Badtime, asm: Assembly-CSharp}
+      data:
+        name: Weapon_Sprite_Component_Data
+        attack_data:
+        - name: Attack 1
+          <phase_sprites>k__BackingField:
+          - <Phase>k__BackingField: 2
+            <Sprites>k__BackingField:
+            - {fileID: -4718762094346127653, guid: 4d37d0c54fab4264e91e54f116ab6a61, type: 3}
+            - {fileID: -7132781726618447814, guid: 3106494cd4992804aa007e52f43b38d1, type: 3}
+            - {fileID: 7372443603320246686, guid: fce80028d0fa2944b99282ff0501a3c3, type: 3}
+            - {fileID: 4152168707709509201, guid: 31dd2800f616f834abf906e8616b374a, type: 3}
+            - {fileID: -3291500552511932882, guid: cc2af3cedb716da4fbde9df8bac58a51, type: 3}
+            - {fileID: -6801982168909926538, guid: 6251ac2dee752874ba70cd84366c8b94, type: 3}
+            - {fileID: 8264264500080453627, guid: 6620e36ef37df0b49a911bee95f963f9, type: 3}
+        - name: Attack 2
+          <phase_sprites>k__BackingField:
+          - <Phase>k__BackingField: 2
+            <Sprites>k__BackingField:
+            - {fileID: 1681021656279356652, guid: 6963fa87f0ee9af48832c4d3f7fc59ff, type: 3}
+            - {fileID: -3402188874343217531, guid: c8f29eadecd19924d985e70c4d00f698, type: 3}
+            - {fileID: -9219176423049248400, guid: 19db4d995ac86184b8177e36f151b5e3, type: 3}
+            - {fileID: -9131217224819720103, guid: e30fb918fccde3140928c44bce2282d0, type: 3}
+            - {fileID: -5323558319679634000, guid: 15a4e96a052469540980087e263fe3c8, type: 3}
+            - {fileID: -3196787629361310318, guid: 71a4910e43b098e4b9dad757dc7e0c07, type: 3}
+        - name: Attack 3
+          <phase_sprites>k__BackingField:
+          - <Phase>k__BackingField: 2
+            <Sprites>k__BackingField:
+            - {fileID: -8226749662584304096, guid: a369efafaa8c94b4f9c6255c8b513c22, type: 3}
+            - {fileID: 7396261938467275021, guid: 16e4071bdeed134438c3459d44d79c08, type: 3}
+            - {fileID: -4218769629913636835, guid: 841123f282c967b4eaf46922f024d7b5, type: 3}
+            - {fileID: 8050197657126290453, guid: 3e761e8c53267984b88cdd7b47c3baee, type: 3}
+            - {fileID: 1599422641176269412, guid: 6643ddc4853fe674790e252faa7f0066, type: 3}
+            - {fileID: 4682188373255982719, guid: 6f90a4b625d1ee249bfd2fe05cced95f, type: 3}
+            - {fileID: 7846630387954933881, guid: 416e29987d43b8c478484dfe1fef0468, type: 3}
+    - rid: 1283878332459122841
+      type: {class: Attack_Movement_Component_Data, ns: Badtime, asm: Assembly-CSharp}
+      data:
+        name: Attack_Movement_Component_Data
+        attack_data:
+        - name: Attack 1
+          <direction>k__BackingField: {x: 1, y: 0}
+          <velocity>k__BackingField: 3
+        - name: Attack 2
+          <direction>k__BackingField: {x: 1, y: 0}
+          <velocity>k__BackingField: 4
+        - name: Attack 3
+          <direction>k__BackingField: {x: 1, y: 0}
+          <velocity>k__BackingField: 5
+    - rid: 1283878354880561312
+      type: {class: Attack_Action_HitBox_Component_Data, ns: Badtime, asm: Assembly-CSharp}
+      data:
+        name: Attack_Action_HitBox_Component_Data
+        attack_data:
+        - name: Attack 1
+          debug: 0
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0.64
+            y: -1.43
+            width: 1.88
+            height: 2.7
+        - name: Attack 2
+          debug: 0
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0.47
+            y: -1.69
+            width: 2.47
+            height: 2.36
+        - name: Attack 3
+          debug: 0
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0.64
+            y: -1.05
+            width: 1.62
+            height: 3.01
+        <Detectable_LayerMasks>k__BackingField:
+          serializedVersion: 2
+          m_Bits: 128
+    - rid: 1283878378303127676
+      type: {class: Attack_Damage_Component_Data, ns: Badtime, asm: Assembly-CSharp}
+      data:
+        name: Attack_Damage_Component_Data
+        attack_data:
+        - name: Attack 1
+          <Amount>k__BackingField: 10
+        - name: Attack 2
+          <Amount>k__BackingField: 15
+        - name: Attack 3
+          <Amount>k__BackingField: 20
+    - rid: 1283878378303127707
+      type: {class: Knock_Back_Component_Data, ns: Badtime, asm: Assembly-CSharp}
+      data:
+        name: Knock_Back_Component_Data
+        attack_data:
+        - name: Attack 1
+          <angle>k__BackingField: {x: 1, y: 1}
+          <strength>k__BackingField: 10
+        - name: Attack 2
+          <angle>k__BackingField: {x: 1, y: 1}
+          <strength>k__BackingField: 10
+        - name: Attack 3
+          <angle>k__BackingField: {x: 1, y: 3}
+          <strength>k__BackingField: 20

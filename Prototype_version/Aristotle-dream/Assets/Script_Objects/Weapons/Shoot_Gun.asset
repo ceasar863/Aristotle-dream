@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83dd7a9d25e933241b6f795052cc73da, type: 3}
+  m_Name: Shoot_Gun
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.Weapon_Data_So
+  <runtime_animator_controller>k__BackingField: {fileID: 9100000, guid: 7feaee8044815e44095c54e949af9f3e, type: 2}
+  <number_of_attacks>k__BackingField: 1
+  <component_datas>k__BackingField:
+  - rid: 1283878400495714429
+  - rid: 1283878406509822044
+  - rid: 1283878429434052735
+  references:
+    version: 2
+    RefIds:
+    - rid: 1283878400495714429
+      type: {class: Weapon_Sprite_Component_Data, ns: Badtime, asm: Assembly-CSharp}
+      data:
+        name: Weapon_Sprite_Component_Data
+        attack_data:
+        - name: Attack 1
+          <phase_sprites>k__BackingField:
+          - <Phase>k__BackingField: 0
+            <Sprites>k__BackingField:
+            - {fileID: -5587333080700837616, guid: a354e35435d1f524f83296a65f5d052b, type: 3}
+            - {fileID: 7169610151285428090, guid: 729a9430ed294ee4b88f138fc1938ec0, type: 3}
+            - {fileID: 5604365670935359547, guid: fc4839e2a20376d41a5e08e6ca938b56, type: 3}
+            - {fileID: -2021374202028445925, guid: e87d7b42d59a95c47ac8fe8c87a644e6, type: 3}
+          - <Phase>k__BackingField: 1
+            <Sprites>k__BackingField:
+            - {fileID: 5430837876202593345, guid: 6e9c7f713ed3d854b8c96eed20be8fa0, type: 3}
+            - {fileID: -706785599367934866, guid: c64f94f76982d084192d11e9353a1d6e, type: 3}
+          - <Phase>k__BackingField: 2
+            <Sprites>k__BackingField:
+            - {fileID: -2403331112813548151, guid: 5094571f5e8b00d45ab71e469038f869, type: 3}
+            - {fileID: -1132085206524454741, guid: b537c0d51a6fda6438b2409ffa091bc1, type: 3}
+            - {fileID: 3868012489018279134, guid: 25e48be02cf33b649bd3e3527be61262, type: 3}
+            - {fileID: 1733691146724473083, guid: 2f12a814caf49de4ab5fe0fcb6d65bfb, type: 3}
+            - {fileID: -590485833506627609, guid: cfcdb977eb596974a85283ea996acbfe, type: 3}
+            - {fileID: -2806812625000870270, guid: 1b69d252609e1794995c18ec943655f4, type: 3}
+            - {fileID: -5845795089630144342, guid: 0608fa1af74a7894fa1458b64492566b, type: 3}
+            - {fileID: 1126503034854179186, guid: c27133a7df17106479915ca4438ebdb9, type: 3}
+            - {fileID: 4563028087046235387, guid: b41a14e69b1acd14794d68eccae9afaf, type: 3}
+    - rid: 1283878406509822044
+      type: {class: Ammo_Component_Data, ns: Badtime, asm: Assembly-CSharp}
+      data:
+        name: Ammo_Component_Data
+        <cross_hair>k__BackingField: {fileID: 2598133221768862113, guid: 0e01011fcf33a244d99180f9d0ebf4ab, type: 3}
+    - rid: 1283878429434052735
+      type: {class: Input_Hold_Data, ns: Badtime, asm: Assembly-CSharp}
+      data:
+        name: Input_Hold_Data
