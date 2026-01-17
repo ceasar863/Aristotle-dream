@@ -27,7 +27,7 @@ public class Player_Aristotle_On_Ground_State : Player_State
         }
         else player_aristotle.crosshair.SetActive(false);
 
-        if (Player_Input_System.instance.player_input.Player.Shoot.WasPerformedThisFrame())
+        if (Player_Input_System.instance.player_input.Player.Shoot.WasPerformedThisFrame() && Player_Input_System.instance.On_UI_Button==false)
             state_machine.Change_State(player_aristotle.shoot_state);
 
         if(Player_Input_System.instance.player_input.Player.Jump.WasPerformedThisFrame())

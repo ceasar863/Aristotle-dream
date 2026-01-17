@@ -1,9 +1,10 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class UI_Basic_Slot : MonoBehaviour
+public class UI_Basic_Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
     //一些存储系统的信息
     protected Consumable_Inventory_System consumable_inventory;
@@ -13,6 +14,7 @@ public class UI_Basic_Slot : MonoBehaviour
     [SerializeField] protected TextMeshProUGUI stack_number_text;
     [SerializeField] protected Item_In_Inventory item_in_slot;
 
+    [Space(20)]
     [SerializeField] protected Item_In_Inventory default_item;
     public Button interactable_button;
 
@@ -46,7 +48,7 @@ public class UI_Basic_Slot : MonoBehaviour
     
     protected virtual void OnTriggerExit2D(Collider2D collision)//取消选中高光
     {
-        
+       
     }
 
     public virtual void Update_UI_Slot(Item_In_Inventory item)
@@ -55,5 +57,21 @@ public class UI_Basic_Slot : MonoBehaviour
 
         interactable_button.image.sprite = this.item_in_slot.the_item.item_data.item_icon;
         stack_number_text.text = this.item_in_slot.current_num==0? " " : this.item_in_slot.current_num.ToString();
+    }
+
+    public virtual void Set_Button_Active(bool active)
+    {
+        Debug.Log(active);
+        interactable_button.enabled = active;
+    }
+
+    public virtual void OnPointerEnter(PointerEventData eventData)
+    {
+        Player_Input_System.instance.On_UI_Button = true;
+    }
+
+    public virtual void OnPointerExit(PointerEventData eventData)
+    {
+        Player_Input_System.instance.On_UI_Button = false;
     }
 }

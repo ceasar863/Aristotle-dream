@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 public class Player_Input_System : MonoSingle<Player_Input_System>
 {
     public Player_Input player_input;
+    public bool On_UI_Button;
 
     /// <summary>
     /// 记录下每个操作所绑定的所有函数
@@ -19,7 +20,7 @@ public class Player_Input_System : MonoSingle<Player_Input_System>
     protected override void Awake()
     {
         base.Awake();
-        
+        On_UI_Button = false;
     }
 
     protected void OnEnable()

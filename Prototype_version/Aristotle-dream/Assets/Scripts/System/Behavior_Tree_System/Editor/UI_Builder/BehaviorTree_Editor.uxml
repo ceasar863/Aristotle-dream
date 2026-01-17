@@ -1,0 +1,24 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Scripts/System/Behavior_Tree_System/Editor/UI_Builder/BehaviorTree_Editor.uss?fileID=7433441132597879392&amp;guid=c8b512072cbf0984487f5ee8b4afa85a&amp;type=3#BehaviorTree_Editor" />
+    <uie:Toolbar>
+        <uie:ToolbarMenu text="Assets" />
+    </uie:Toolbar>
+    <Badtime.Split_View fixed-pane-initial-dimension="300">
+        <ui:VisualElement name="Left_Panel" style="flex-grow: 1; width: 301px; flex-direction: column; align-content: flex-start;">
+            <Badtime.Split_View orientation="Vertical" fixed-pane-initial-dimension="265.4" name="Split_View">
+                <ui:VisualElement name="Inspector-container" style="flex-grow: 1; background-color: rgb(42, 42, 42);">
+                    <Badtime.Inspector_View style="flex-grow: 0; width: 195px;" />
+                    <ui:Label text="Inspector" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Blackboard-container" style="flex-grow: 1; background-color: rgb(38, 36, 36);">
+                    <ui:Label text="Blackboard" style="background-color: rgb(74, 72, 72);" />
+                    <ui:IMGUIContainer />
+                </ui:VisualElement>
+            </Badtime.Split_View>
+        </ui:VisualElement>
+        <ui:VisualElement name="Right_Panel" style="flex-grow: 1; align-items: stretch; flex-direction: column; flex-wrap: nowrap;">
+            <ui:Label text="Tree View" emoji-fallback-support="false" style="background-color: rgb(51, 51, 51);" />
+            <Badtime.BehaviorTree_View style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </Badtime.Split_View>
+</ui:UXML>

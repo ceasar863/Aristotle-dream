@@ -79,6 +79,11 @@ public class Weapon : Item
         attack_count_timer.Tick();
     }
 
+    public void Adjust_Current_Attack_Counter()
+    {
+        current_attack_counter = (current_attack_counter >= Data.number_of_attacks) ? 0 : current_attack_counter;
+    }
+
     public void Set_Data(Weapon_Data_So data)
     {
         Data = data;

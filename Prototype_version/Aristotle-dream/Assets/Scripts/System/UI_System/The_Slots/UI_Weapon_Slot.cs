@@ -10,16 +10,25 @@ public class UI_Weapon_Slot : UI_Sorts_Of_Slot
     protected override void Start()
     {
         base.Start();
+        Event_Center.Broad_Cast(Event_Type.Update_Weapon_Slot);
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
+        Event_Center.Add_Listener(Event_Type.Update_Weapon_Slot, UI_Current_Slot_Update);
+        Event_Center.Add_Listener(Event_Type.Update_Weapon_Slot, UI_Inventory_Slot_Update);
+
+        Event_Center.Add_Listener<bool>(Event_Type.Set_Switch_Weapon_Interactable, Set_Child_Slots);
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
+        Event_Center.Remove_Listener(Event_Type.Update_Weapon_Slot, UI_Current_Slot_Update);
+        Event_Center.Remove_Listener(Event_Type.Update_Weapon_Slot, UI_Inventory_Slot_Update);
+
+        Event_Center.Remove_Listener<bool>(Event_Type.Set_Switch_Weapon_Interactable, Set_Child_Slots);
     }
 
     public override void UI_Inventory_Slot_Update()
@@ -58,5 +67,10 @@ public class UI_Weapon_Slot : UI_Sorts_Of_Slot
     public override void Show_Child_Slots()
     {
         slot_manager.Switch_Slot_Visibility();
+    }
+
+    public void Set_Child_Slots(bool flag)
+    {
+        slot_manager.Switch_Slot_Visibility(flag);
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83dd7a9d25e933241b6f795052cc73da, type: 3}
   m_Name: Shoot_Gun
   m_EditorClassIdentifier: Assembly-CSharp::Badtime.Weapon_Data_So
+  <weapon_name>k__BackingField: Shoot_Gun
   <runtime_animator_controller>k__BackingField: {fileID: 9100000, guid: 7feaee8044815e44095c54e949af9f3e, type: 2}
   <number_of_attacks>k__BackingField: 1
   <component_datas>k__BackingField:

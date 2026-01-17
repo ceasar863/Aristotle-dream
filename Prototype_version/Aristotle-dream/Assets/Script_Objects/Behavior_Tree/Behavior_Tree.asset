@@ -1,0 +1,281 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5377923622989976112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af1549d9a54f6d488ad73700c20c608, type: 3}
+  m_Name: DebugLog_Node
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.DebugLog_Node
+  state: 0
+  started: 0
+  guid: c933be640cd20874cafedce272e44808
+  position: {x: -112.604324, y: 380.9999}
+  blackboard:
+    move_to_position: {x: 0, y: 0, z: 0}
+    move_to_object: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  message: Two
+--- !u!114 &-4017705551069167298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af1549d9a54f6d488ad73700c20c608, type: 3}
+  m_Name: DebugLog_Node
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.DebugLog_Node
+  state: 0
+  started: 0
+  guid: 1ebd03c8c2b92414195a0c78f2108b9f
+  position: {x: -503.81506, y: 378.87274}
+  blackboard:
+    move_to_position: {x: 0, y: 0, z: 0}
+    move_to_object: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  message: 
+--- !u!114 &-2304692387380889075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a8ff791fdf1054e85ed7257eabda6e, type: 3}
+  m_Name: Sequencer_Node
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.Sequencer_Node
+  state: 0
+  started: 0
+  guid: ba4d468cf92c188499c1c66863cd6597
+  position: {x: -345.0001, y: -7.022703}
+  blackboard:
+    move_to_position: {x: 0, y: 0, z: 0}
+    move_to_object: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  children:
+  - {fileID: 446843711945647582}
+  - {fileID: 6936534840390744929}
+--- !u!114 &-2025907183208675205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3e0d64d9bd1c1489febc9caf915cab, type: 3}
+  m_Name: Repeat_Node
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.Repeat_Node
+  state: 0
+  started: 0
+  guid: a17825ca9c23453418aec08c0b5691b9
+  position: {x: -346, y: -130.0227}
+  blackboard:
+    move_to_position: {x: 0, y: 0, z: 0}
+    move_to_object: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  child: {fileID: -2304692387380889075}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50bd9a60f43bcb04dabf1b73e7962222, type: 3}
+  m_Name: Behavior_Tree
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.Behavior_Tree
+  root_node: {fileID: 4465793145221696178}
+  tree_state: 0
+  nodes:
+  - {fileID: 446843711945647582}
+  - {fileID: 4465793145221696178}
+  - {fileID: -5377923622989976112}
+  - {fileID: 641130696838504126}
+  - {fileID: 4681771355688532907}
+  - {fileID: 3956825196798540918}
+  - {fileID: 6936534840390744929}
+  - {fileID: -2025907183208675205}
+  - {fileID: -2304692387380889075}
+  - {fileID: -4017705551069167298}
+  - {fileID: 7739947077413932272}
+  blackboard:
+    move_to_position: {x: 0, y: 0, z: 0}
+    move_to_object: {fileID: 0}
+--- !u!114 &446843711945647582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a8ff791fdf1054e85ed7257eabda6e, type: 3}
+  m_Name: Sequencer_Node
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.Sequencer_Node
+  state: 0
+  started: 0
+  guid: 9272bacf9c0802c4c99a391c40d0f01a
+  position: {x: -549.81506, y: 126.87276}
+  blackboard:
+    move_to_position: {x: 0, y: 0, z: 0}
+    move_to_object: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  children:
+  - {fileID: 4681771355688532907}
+  - {fileID: 3956825196798540918}
+  - {fileID: -4017705551069167298}
+  - {fileID: 7739947077413932272}
+--- !u!114 &641130696838504126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6048934368c3a4fa09d32d4cde169b, type: 3}
+  m_Name: Wait_Node
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.Wait_Node
+  state: 0
+  started: 0
+  guid: 21b37f8808ff2e841860b4026a48f403
+  position: {x: 69.3956, y: 380.9999}
+  blackboard:
+    move_to_position: {x: 0, y: 0, z: 0}
+    move_to_object: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  duration: 1
+--- !u!114 &3956825196798540918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6048934368c3a4fa09d32d4cde169b, type: 3}
+  m_Name: Wait_Node
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.Wait_Node
+  state: 0
+  started: 0
+  guid: 9c9feb43130f3514f9a8271bc61542a6
+  position: {x: -674.8151, y: 378.87274}
+  blackboard:
+    move_to_position: {x: 0, y: 0, z: 0}
+    move_to_object: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  duration: 1
+--- !u!114 &4465793145221696178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80cd385aa28502e48af736fdd30ad8be, type: 3}
+  m_Name: Root_Node
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.Root_Node
+  state: 0
+  started: 0
+  guid: e7784601eb32b4b43a82a1a5ec810063
+  position: {x: -346, y: -257.02274}
+  blackboard:
+    move_to_position: {x: 0, y: 0, z: 0}
+    move_to_object: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  child: {fileID: -2025907183208675205}
+--- !u!114 &4681771355688532907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af1549d9a54f6d488ad73700c20c608, type: 3}
+  m_Name: DebugLog_Node
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.DebugLog_Node
+  state: 0
+  started: 0
+  guid: 0e14655a58c91814bad54084f69162ad
+  position: {x: -832.8151, y: 378.87274}
+  blackboard:
+    move_to_position: {x: 0, y: 0, z: 0}
+    move_to_object: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  message: Three!
+--- !u!114 &6936534840390744929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a8ff791fdf1054e85ed7257eabda6e, type: 3}
+  m_Name: Sequencer_Node
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.Sequencer_Node
+  state: 0
+  started: 0
+  guid: 2dcce9ad139877d408b04b523a8d4518
+  position: {x: -72.60431, y: 134.99997}
+  blackboard:
+    move_to_position: {x: 0, y: 0, z: 0}
+    move_to_object: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  children:
+  - {fileID: -5377923622989976112}
+  - {fileID: 641130696838504126}
+--- !u!114 &7739947077413932272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6048934368c3a4fa09d32d4cde169b, type: 3}
+  m_Name: Wait_Node
+  m_EditorClassIdentifier: Assembly-CSharp::Badtime.Wait_Node
+  state: 0
+  started: 0
+  guid: 95f873a088798c94d9b27c95001cf27f
+  position: {x: -344.6043, y: 375.99997}
+  blackboard:
+    move_to_position: {x: 0, y: 0, z: 0}
+    move_to_object: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  duration: 1

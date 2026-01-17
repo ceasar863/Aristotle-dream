@@ -18,7 +18,6 @@ namespace Badtime
         private void Handle_Current_Input_Change(bool new_input)
         {
             input = new_input;
-            Debug.Log(input);
             Set_Animator_Parameter();
         }
 

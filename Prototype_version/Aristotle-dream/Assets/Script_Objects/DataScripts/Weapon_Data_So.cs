@@ -9,7 +9,7 @@ namespace Badtime
     [CreateAssetMenu(fileName = "New_Weapon_Data" , menuName = "Data/Weapon Data/Basic Weapon Data" , order =0)]
     public class Weapon_Data_So : ScriptableObject
     {
-
+        [field:SerializeField] public string weapon_name { get; private set; }
         [field: SerializeField] public RuntimeAnimatorController runtime_animator_controller { get; private set; }
         [field:SerializeField] public int number_of_attacks { get; private set; }
 

@@ -17,7 +17,7 @@ public class UI_Child_Slots_Manager : MonoBehaviour
 
     private void Start()
     {
-        item_type = GetComponentInParent<UI_Shortcut_Slot>(true).item_type;
+        item_type = GetComponentInParent<UI_Sorts_Of_Slot>(true).item_type;
         inventory = CommonUtils.Get_Sort_Inventory(item_type);
 
         foreach (UI_Child_Shortcut_Slot child_slot in ui_expand_child_slots)
@@ -38,6 +38,15 @@ public class UI_Child_Slots_Manager : MonoBehaviour
         for(int i=0; i<inventory.inventory_list.Length ; i++)
         {
             ui_expand_child_slots[i].gameObject.SetActive(switch_case);
+        }
+    }
+
+    public void Switch_Slot_Visibility(bool flag)
+    {
+        switch_case = flag;
+        for (int i = 0; i < inventory.inventory_list.Length; i++)
+        {
+            ui_expand_child_slots[i].gameObject.SetActive(flag);
         }
     }
 }

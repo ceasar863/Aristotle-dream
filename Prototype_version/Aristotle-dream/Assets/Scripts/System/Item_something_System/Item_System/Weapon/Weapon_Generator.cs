@@ -74,7 +74,10 @@ namespace Badtime
         {
             //现先屏蔽掉原来已有装备的所有相关组件
             foreach (Weapon_Component weapon_component in component_already_on_weapon)
+            {
+                if (weapon_component == null) continue;
                 weapon_component.enabled = false;
+            }
 
             //生成or恢复新武器的组件
             Generate_Weapon(data);

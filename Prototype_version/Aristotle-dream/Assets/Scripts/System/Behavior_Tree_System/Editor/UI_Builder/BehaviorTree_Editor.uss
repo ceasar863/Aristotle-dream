@@ -1,0 +1,7 @@
+GridBackground
+{
+	--grid-background-color: rgb(40,40,40);/* 深灰色背景*/
+	--line-color: rgba(193,196,192,0.1);/*极淡的细网格线*/
+	--thick-line-color: rgba(193,196,192,0.1);/*粗线*/
+	--spacing: 15;/*网格间距15像素*/
+}

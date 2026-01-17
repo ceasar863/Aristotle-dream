@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca7bcee2a2a12a488b095dcf0361aff, type: 3}
+  m_Name: Shoot_Gun
+  m_EditorClassIdentifier: Assembly-CSharp::Item_Data_So
+  item_name: Shoot_Gun
+  description: Tenshi's Gun
+  item_type: 4
+  stack_limit: 1
+  item_icon: {fileID: 6060653049195598734, guid: 689408e9967833c4fb6ddbddaf1c225c, type: 3}

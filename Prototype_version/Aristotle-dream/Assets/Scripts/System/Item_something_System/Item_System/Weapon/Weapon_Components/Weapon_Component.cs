@@ -81,6 +81,7 @@ namespace Badtime
         protected override void Handle_Enter()
         {
             base.Handle_Enter();
+            weapon.Adjust_Current_Attack_Counter();
             current_attack_data = data.Attack_Data[weapon.current_attack_counter];
         }
 

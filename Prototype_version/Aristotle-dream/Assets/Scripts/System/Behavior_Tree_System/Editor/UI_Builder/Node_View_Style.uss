@@ -1,0 +1,121 @@
+:root {
+}
+
+#node-border {
+    background-color: rgb(215, 113, 113);
+}
+
+#input {
+    align-items: center;
+}
+
+#output {
+    align-items: center;
+}
+
+#selection-border {
+    border-right-color: rgb(18, 91, 183);
+    border-top-color: rgb(0, 85, 225);
+    border-bottom-color: rgb(6, 82, 217);
+    border-left-color: rgb(0, 84, 218);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+:selected #selection-border {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+:hover > #selection-border {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+:hover:selected > #selection-border {
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+}
+
+:hover:selected #selection-border {
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+}
+
+.node {
+    width: 150px;
+}
+
+#title {
+    -unity-font-style: bold;
+}
+
+#description {
+    font-size: 10px;
+}
+
+#divider {
+    min-height: 1px;
+    color: rgb(208, 208, 208);
+    font-size: 12px;
+    -unity-text-outline-color: rgb(148, 148, 148);
+    background-color: rgb(104, 101, 101);
+}
+
+.action #input {
+    background-color: rgb(115, 192, 0);
+}
+
+.composite #input {
+    background-color: rgb(246, 174, 45);
+}
+
+.root #input {
+    min-height: 20px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(213, 0, 0);
+}
+
+.decoration #input {
+    background-color: rgb(137, 166, 251);
+}
+
+#node-state {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 200, 217, 0.75);
+    position: absolute;
+}
+
+.failure #node-state {
+    background-color: rgba(196, 0, 0, 0.55);
+}
+
+.running #node-state {
+    background-color: rgb(255, 244, 0);
+}
+
+.success #node-state {
+    background-color: rgb(4, 255, 61);
+}

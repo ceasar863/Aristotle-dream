@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Game Aristotle", menuName = "GameObjects/Items")]
+[Serializable]
 public class Item_Data_So : ScriptableObject
 {
     public string item_name;//物品的名字

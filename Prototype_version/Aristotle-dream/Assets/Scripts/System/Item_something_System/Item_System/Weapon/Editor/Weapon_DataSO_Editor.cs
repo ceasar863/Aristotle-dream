@@ -22,7 +22,7 @@ namespace Badtime
 
         public void OnEnable()
         {
-            weapon_data_so = target as Weapon_Data_So;
+            weapon_data_so = target as Weapon_Data_So;//target是Editor基类的属性，指向当前被编辑的对象
         }
 
         public override void OnInspectorGUI()

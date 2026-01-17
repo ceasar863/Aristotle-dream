@@ -21,6 +21,7 @@ public class Player_Aristotle_Shoot_State : Player_State
     {
         base.Enter();
         weapon.Enter();
+        Event_Center.Broad_Cast(Event_Type.Set_Switch_Weapon_Interactable, false);
     }
 
     public override void Update()

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class UI_Shortcut_Slot : UI_Sorts_Of_Slot
 {
-
     protected override void Awake()
     {
         base.Awake();
@@ -12,12 +11,15 @@ public class UI_Shortcut_Slot : UI_Sorts_Of_Slot
     protected override void OnEnable()
     {
         base.OnEnable();
+        Event_Center.Add_Listener(Event_Type.Update_Item_Slot, UI_Current_Slot_Update);
+        Event_Center.Add_Listener(Event_Type.Update_Item_Slot, UI_Inventory_Slot_Update);
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-       
+        Event_Center.Remove_Listener(Event_Type.Update_Item_Slot, UI_Current_Slot_Update);
+        Event_Center.Remove_Listener(Event_Type.Update_Item_Slot, UI_Inventory_Slot_Update);
     }
 
     protected override void Start()
@@ -39,7 +41,7 @@ public class UI_Shortcut_Slot : UI_Sorts_Of_Slot
 
     public override void UI_Current_Slot_Update()
     {
-        if(consumable_inventory.current_item == null || consumable_inventory.current_item.current_num==0)
+        if (consumable_inventory.current_item == null || consumable_inventory.current_item.current_num == 0)
         {
             consumable_inventory.current_item = null;
             Update_UI_Slot(default_item);
@@ -49,5 +51,4 @@ public class UI_Shortcut_Slot : UI_Sorts_Of_Slot
         interactable_button.image.sprite = consumable_inventory.current_item.the_item.item_data.item_icon;
         stack_number_text.text = consumable_inventory.current_item.current_num.ToString();
     }
-
 }

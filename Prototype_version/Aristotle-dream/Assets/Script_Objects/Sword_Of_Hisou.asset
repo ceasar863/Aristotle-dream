@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca7bcee2a2a12a488b095dcf0361aff, type: 3}
   m_Name: Sword_Of_Hisou
   m_EditorClassIdentifier: Assembly-CSharp::Item_Data_So
-  item_name: Sword of Hisou
-  description: Tianshi's Sword
+  item_name: Sword_Of_Hisou
+  description: Tenshi's Sword
   item_type: 4
   stack_limit: 1
   item_icon: {fileID: -5031041004697997460, guid: bc04e66ca412162448753c3b55f1ada6, type: 3}

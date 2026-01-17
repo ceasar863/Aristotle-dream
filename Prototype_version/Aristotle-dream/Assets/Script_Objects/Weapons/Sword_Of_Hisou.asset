@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83dd7a9d25e933241b6f795052cc73da, type: 3}
   m_Name: Sword_Of_Hisou
   m_EditorClassIdentifier: Assembly-CSharp::Badtime.Weapon_Data_So
+  <weapon_name>k__BackingField: Sword_Of_Hisou
   <runtime_animator_controller>k__BackingField: {fileID: 9100000, guid: 73e53570e06a0b84ba79ce76766105bf, type: 2}
   <number_of_attacks>k__BackingField: 3
   <component_datas>k__BackingField:

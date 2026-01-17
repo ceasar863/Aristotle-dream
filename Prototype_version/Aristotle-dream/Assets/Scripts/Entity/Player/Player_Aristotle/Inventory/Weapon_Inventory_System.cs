@@ -1,14 +1,17 @@
+using Badtime;
 using System;
 using UnityEngine;
 
 public class Weapon_Inventory_System : Base_Inventory_System
 {
     public static Weapon_Inventory_System instance;
+    private Weapon_Generator generator;//获取到武器生成器
 
     protected override void Awake()
     {
         base.Awake();
         Monosingle();
+        generator = FindFirstObjectByType(typeof(Weapon_Generator)) as Weapon_Generator;
     }
 
     protected override void Start()
@@ -41,11 +44,11 @@ public class Weapon_Inventory_System : Base_Inventory_System
     {
         for(int i=0; i<inventory_list.Length ; i++)
         {
-            Item_In_Inventory weapon = inventory_list[i];
-            if(weapon == null || weapon.the_item == null)
+            if(inventory_list[i] == null || inventory_list[i].the_item == null)
             {
-                weapon = new Item_In_Inventory(new_weapon,1);
+                inventory_list[i] = new Item_In_Inventory(new_weapon,1);
                 Debug.Log("Get a new weapon！");
+                Event_Center.Broad_Cast(Event_Type.Update_Weapon_Slot);
                 return;
             }
         }
@@ -62,27 +65,14 @@ public class Weapon_Inventory_System : Base_Inventory_System
         //从格子中删除信息:
         Item_In_Inventory weapon = inventory_list[id];
         weapon.the_item = null; weapon.current_num = 0;
-
+        Event_Center.Broad_Cast(Event_Type.Update_Weapon_Slot);
         //用对象池在人物附近生成该物体:
 
     }
-
-    /// <summary>
-    /// 装备当前武器，绑定当前武器的所需输入
-    /// </summary>
-    public void Equip_Current_Weapon()
+    
+    public void Change_Weapon(string weapon_name)
     {
-        Weapon weapon = current_item.the_item as Weapon;
-        weapon.Equip();
-    }
-
-    /// <summary>
-    /// 卸下装备，解除当前装备的输入
-    /// </summary>
-    public void Unequip_Current_Weapon()
-    {
-
-        Weapon weapon = current_item.the_item as Weapon;
-        weapon.Unequip();
+        Weapon_Data_So data = Weapon_Storage.instance.Get_Weapon_Data(weapon_name);
+        if(data!=null) generator.Change_Weapon(data);
     }
 }
